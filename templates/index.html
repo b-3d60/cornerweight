@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend für Gewichtsberechnung</title>
+</head>
+<body>
+    <h1>Gewichtsberechnung</h1>
+    
+    <form action="/" method="post">
+        <!-- Eingabemaske für die Messwerte -->
+        <label for="lf">Linke Vorderseite:</label>
+        <input type="number" id="lf" name="LF" required><br>
+
+        <label for="rf">Rechte Vorderseite:</label>
+        <input type="number" id="rf" name="RF" required><br>
+
+        <label for="lr">Linke Hinterseite:</label>
+        <input type="number" id="lr" name="LR" required><br>
+
+        <label for="rr">Rechte Hinterseite:</label>
+        <input type="number" id="rr" name="RR" required><br>
+
+        <!-- Eingabemaske für die Winkel -->
+        <label for="theta_x">Winkel in x-Richtung (Grad):</label>
+        <input type="number" id="theta_x" name="theta_x" required><br>
+
+        <label for="theta_y">Winkel in y-Richtung (Grad):</label>
+        <input type="number" id="theta_y" name="theta_y" required><br>
+
+        <!-- Eingabemaske für die Kalibrierungsfaktoren -->
+        <label for="lf_cal">Kalibrierungsfaktor LF:</label>
+        <input type="number" id="lf_cal" name="LF_CAL" step="0.01" required><br>
+
+        <label for="rf_cal">Kalibrierungsfaktor RF:</label>
+        <input type="number" id="rf_cal" name="RF_CAL" step="0.01" required><br>
+
+        <label for="lr_cal">Kalibrierungsfaktor LR:</label>
+        <input type="number" id="lr_cal" name="LR_CAL" step="0.01" required><br>
+
+        <label for="rr_cal">Kalibrierungsfaktor RR:</label>
+        <input type="number" id="rr_cal" name="RR_CAL" step="0.01" required><br>
+
+        <!-- Button für Tara-Funktion -->
+        <input type="submit" name="action" value="Berechnen">
+        <input type="submit" name="action" value="Tara">
+
+    </form>
+
+    {% if total_mass %}
+        <h2>Ergebnisse:</h2>
+        <!-- Ergebnisse anzeigen -->
+        <p>Gesamtmasse: {{ total_mass }} kg</p>
+        <p>Gewichtskraft (senkrecht zur Ebene in x-Richtung): {{ Fgx }} N</p>
+        <p>Reaktionskraft (parallel zur Ebene in x-Richtung): {{ Frx }} N</p>
+        <p>Gewichtskraft (unter Berücksichtigung der schiefen Ebene in x-Richtung): {{ Fgx_schräg }} N</p>
+        <p>Gewichtskraft (senkrecht zur Ebene in y-Richtung): {{ Fgy }} N</p>
+        <p>Reaktionskraft (parallel zur Ebene in y-Richtung): {{ Fry }} N</p>
+        <p>Gewichtskraft (unter Berücksichtigung der schiefen Ebene in y-Richtung): {{ Fgy_schräg }} N</p>
+        <p>Gesamtgewichtskraft (unter Berücksichtigung der schiefen Ebene): {{ Fg_schräg }} N</p>
+    {% endif %}
+</body>
+</html>
