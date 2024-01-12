@@ -10,7 +10,7 @@ COPY templates /app/templates/
 COPY weight_logs.db /app/
 
 # Installiere erforderliche Abhängigkeiten
-RUN pip install Flask sqlite3
+RUN pip install Flask
 
 # Öffne den Port 5000 für die Flask-Anwendung
 EXPOSE 5000
