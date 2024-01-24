@@ -13,7 +13,7 @@ COPY weight_logs.db /app/
 RUN pip install Flask
 
 # Öffne den Port 8000 für die Flask-Anwendung
-EXPOSE 8000
+EXPOSE 5000
 
 # Befehl, der beim Start des Containers ausgeführt wird
 CMD ["python", "app.py"]
